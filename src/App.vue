@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 import axios from 'axios';
 import RaceTypeFilter from '@/components/RaceTypeFilter.vue';
 import RaceList, { RaceListData } from '@/components/RaceList.vue';
@@ -41,7 +41,7 @@ export default defineComponent({
     return {
       raceCount: '100',
       requestedCount: 5,
-      raceData: ref([]) as any,
+      raceData: [] as any,
     };
   },
   mounted() {
@@ -49,7 +49,9 @@ export default defineComponent({
   },
   unmounted() {
     // always remove interval or timeout subscriptions to avoid memory leaks.
-    window.clearInterval(this.timerId);
+    if (this.timerId !== 0) {
+      window.clearInterval(this.timerId);
+    }
   },
   methods: {
     async getRaceData() {

@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 
 export default {
   name: 'RaceTypeFilter',
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     // ideally I would use an enum here - was having issues with linter.
-    setSelected(raceType: 'Greyhound' | 'Harness' | 'Horse') {
+    setSelected(raceType) {
       this.$emit('updatedFilter', raceType);
     },
   },

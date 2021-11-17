@@ -21,6 +21,7 @@ export default {
       },
       refreshTimerId: {
         type: Number,
+        default: null,
       },
     };
   },
@@ -32,7 +33,9 @@ export default {
   },
   unmounted() {
     // always clean up intervals and timeouts - just removing on component destruction.
-    window.clearInterval(this.refreshTimerId);
+    if (this.refreshTimerId) {
+      clearInterval(this.refreshTimerId);
+    }
   },
   methods: {
     refreshData() {
