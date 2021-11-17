@@ -1,7 +1,7 @@
 <template>
   <main>
     <div>
-      {{countDownTimer}}
+      {{countDownTimer.length ? countDownTimer : 'loading'}}
     </div>
   </main>
 </template>
